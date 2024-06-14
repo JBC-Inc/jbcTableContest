@@ -1,0 +1,129 @@
+
+:root {
+    --label-color: rgba(184, 199, 206, 1);    /* #b8c7ce steel blue */
+    --button-color: rgba(60, 142, 188, 1);    /* #3c8dbc blue       */
+}
+
+body:not(.modal-open){
+  padding-right: 0px !important;
+}
+
+/* dashboardSidebar */
+
+.shinyhelper-container {
+  color: var(--label-color);
+  margin-right: 20px;
+  margin-top: 6px;
+}
+
+.progress.shiny-file-input-progress {
+  margin-bottom: 5px;
+}
+
+/* buttons */
+
+button.dt-button, .btn-default, #reset_app-reload, #file_input-ls {
+  color: white;
+  background-color: var(--button-color);
+  border-color: var(--button-color);
+}
+
+button.dt-button.buttons-collection {
+  border-radius: 3px;
+  color: white;
+  background-color: var(--button-color);
+  border-color: var(--button-color);
+}
+
+#render, #down, #reset-app, #load-samp {
+  display: flex;
+  justify-content: space-around;
+}
+
+#choices-render, #csv_server-dd, #reset_app-reload, #file_input-ls {
+  width: 87%;
+  border-radius: 3px;
+  margin-bottom: 7px;
+}
+
+#optionsUI-options {
+  float: left;
+  margin: 15px 15px;
+}
+
+/* form-group & controls spacing */
+
+.form-group {
+  margin-bottom: 0;
+}
+
+section.sidebar .shiny-input-container {
+    padding: 5px 15px 0px 15px;
+    white-space: normal;
+}
+
+.dttm {
+  float: right;
+  margin-right: 5px;
+  color: var(--label-color);
+}
+
+.control-label, #ls {                           /* date, date2, dttm, (#ls - nll) */
+  color: var(--label-color);
+  font-size: 11pt;
+  font-weight: normal;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+input#nll {
+    border-radius: 4px;
+}
+
+.selectize-control{
+  margin: 0px 0px;
+}
+
+/* dashboardBody */
+
+div.col-sm-12 {
+  padding: 0;
+}
+
+div.output-container {
+  margin: 0px 15px;
+}
+
+#fa-container {
+  width: 142px;
+  margin: 0px 15px;
+  background-color: pink;
+  color: black;
+}
+
+/* datatable */
+
+div.dtsp-panesContainer div.dtsp-searchPanes {
+    width: 42%;
+}
+
+.dataTables_wrapper .dataTables_length{
+  float: right;
+}
+
+/* leaflet loading cover up */
+
+.map-loading {
+  position: absolute;           /* absolute to output-container */
+  display: none;                /* hidden on startup            */
+  justify-content: center;
+  align-items: center;
+
+  width: 86.5%;                 /* width is less than leafletOutput 85% original */
+  height: 50vh;                 /* height must match leafletOutput  */
+
+  color: white;
+  font-size: 20pt;
+  background-color: #222d32;    /* #3e525b; */
+  text-align: center;
+  z-index: 9999;
+}

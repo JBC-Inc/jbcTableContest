@@ -1,0 +1,42 @@
+function(rows, group, level) {
+  if(level == 0) {
+    var style = 'background-color:#2C3E50; color: #CCCCCC;'                           // gray
+    var td = `<td style='${style}' colspan=9>${group}</td>`
+    var sEUR  = 'background-color:#3498DB; text-align:center; color: black;'          // #A6A6A6
+    var tdEUR = `<td style='${sEUR}' colspan = 7>EUR</td>`
+    var ssEUR  = 'background-color:#85C1E9; text-align:center; color: black; '       // #D9D9D9
+    var stdEUR = `<td style='${ssEUR}' colspan=8>EUR w/Normalized Lateral Length</td>`
+    return $(`<tr>${td}</tr>`)
+    .append(`${tdEUR}`)
+    .append(`${stdEUR}`)
+  } if (level == 1) {
+    var style = 'background-color: white; font-weight:bold; color: gray;' +
+    'border-bottom: 1px solid black; border-top: 1px solid black;'
+    var td = `<td style='${style}' >${group}</td>`
+    var bc = 'background-color: white; border-bottom: 1px solid black; border-top: 1px solid black; color: black;'
+    return $(`<tr>${td}</tr>`)
+    .append( `<td style='${bc}'>Total</td>`)
+    .append( `<td style='${bc}'>Active</td>`)
+    .append( `<td style='${bc}'>Inactive</td>`)
+    .append( `<td style='${bc}'>P&A</td>`)
+    .append( `<td style='${bc}'>TA</td>`)
+    .append( `<td style='${bc}'>Alt</td>`)
+    .append( `<td style='${bc}'>Phase</td>`)
+    .append( `<td style='${bc} border-right: 1px solid black;'>TOL</td>`)
+    .append( `<td style='${bc}'>n()</td>` )
+    .append( `<td style='${bc}'>Average</td>` )
+    .append( `<td style='${bc}'>Median</td>` )
+    .append( `<td style='${bc}'>P10</td>` )
+    .append( `<td style='${bc}'>P90</td>` )
+    .append( `<td style='${bc}'>p hat</td>` )
+    .append( `<td style='${bc} border-right: 1px solid black;'>P90/P10</td>`)
+    .append( `<td style='${bc}'>Avg LL</td>`)
+    .append( `<td style='${bc}'>n()</td>` )
+    .append( `<td style='${bc}'>Average</td>` )
+    .append( `<td style='${bc}'>Median</td>` )
+    .append( `<td style='${bc}'>P10</td>` )
+    .append( `<td style='${bc}'>P90</td>` )
+    .append( `<td style='${bc}'>p hat</td>` )
+    .append( `<td style='${bc}'>P90/P10</td>`)
+  }
+}

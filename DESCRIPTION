@@ -1,0 +1,42 @@
+Package: jbcTableContest
+Title: Codebase for the POSIT 2024 TABLE CONTEST 
+Version: 0.0.0.9000
+Authors@R: 
+    person("Jeff", "Craggy", , "craggyjeff@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: View wells in radius areas, calucate estimated ultimate recovery, and hypothesis of EUR based on the specified well horizontal lateral length. R Shiny dashboard with oil well map(leaflet), and well Estimated Ultimate Recovery(DT).
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+URL: https://github.com/JBC-Inc/jbcTableContestView
+BugReports: https://github.com/JBC-Inc/jbcTableContest/issues
+Suggests: 
+    usethis,
+    devtools
+Imports: 
+    bslib,
+    colourpicker,
+    dplyr,
+    DT,
+    forcats,
+    htmltools,
+    leaflet,
+    leaflet.extras,
+    lubridate,
+    measurements,
+    readr,
+    sf,
+    shiny,
+    shinyalert,
+    shinycssloaders,
+    shinydashboard,
+    shinyhelper,
+    shinyjs,
+    shinyvalidate,
+    shinyWidgets,
+    stringr,
+    tidyr,
+    tidyselect,
+    viridis,
+    waiter
