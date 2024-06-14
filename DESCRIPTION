@@ -1,5 +1,5 @@
 Package: jbcTableContest
-Title: Codebase for the POSIT 2024 TABLE CONTEST 
+Title: 2024 Table Contest submission
 Version: 0.0.0.9000
 Authors@R: 
     person("Jeff", "Craggy", , "craggyjeff@gmail.com", role = c("aut", "cre"),
