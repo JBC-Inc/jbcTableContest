@@ -14,19 +14,19 @@
 
       NatGeo:
 
-      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', { maxZoom: 16, minZoom: 6 }),
+      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', { maxZoom: 16, minZoom: 6 })
 
-      Stadia_AlidadeSmoothDark:
+      // Stadia_AlidadeSmoothDark:
 
-      L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', { maxZoom: 14, minZoom: 10 })
+      // L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', { maxZoom: 14, minZoom: 10 })
     };
 
     var groupedOverlays = {
       "Map Type": {
         "Cartography Database": basemaps.CartoDB_Positron,
         "Open Street Map": basemaps.Streets,
-        "National Geographic": basemaps.NatGeo,
-        "Stadia Alidade": basemaps.Stadia_AlidadeSmoothDark
+        "National Geographic": basemaps.NatGeo
+        //"Stadia Alidade": basemaps.Stadia_AlidadeSmoothDark
       }
     };
 
