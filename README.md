@@ -52,6 +52,8 @@ the “Wolfcamp” and “Trend Area” oil reservoirs. Many different
 reservoirs may be shown on the map, but only the “Wolfcamp” and “Trend
 Area” wells have relevant accompanying data within the DT.
 
+Metrics per `Reservoir Area`:
+
     Distribution Percentiles: average, median, P10, P90, P10/P90 Ratio
 
     Sample Porportion Estimate: P Hat
