@@ -9,7 +9,7 @@ calcRateTime(filtered, production, nll = 10000)
 \arguments{
 \item{filtered}{filtered subset of the SL dataset.}
 
-\item{production}{usfsrpmsc production data.}
+\item{production}{production data.}
 
 \item{nll}{reactive normalized lateral length.}
 }
@@ -23,5 +23,5 @@ calcRateTime(filtered, production, nll = 10000)
 }
 }
 \description{
-Selected filtered wells, combine USFSRPMSC production data (decline rate) and calculate new output
+Selected filtered wells, combine production data (decline rate) and calculate new output
 }

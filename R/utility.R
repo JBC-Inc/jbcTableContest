@@ -188,7 +188,7 @@ scaledVol <- function(vol, norm_lat_len, lat_len) {
 #'
 #' @param filtered filtered subset of the SL dataset.
 #' @param multi whether or not the shapefile has one or more polygons.
-#' @param eur usfsrpmsc entity EUR data.
+#' @param eur entity EUR data.
 #' @param nll reactive Normalized Lateral Length
 #' @param summary flag indicating whether or not data is used for the actual UI `DTOutput`
 #' @param sumEUR flag indicating whether or not to generate data in wide or EUR formats.
@@ -427,11 +427,11 @@ computeSummary <- function(filtered, multi, eur,
 
 #' Calculate Rate Time
 #'
-#' Selected filtered wells, combine USFSRPMSC production data (decline rate) and calculate new output
+#' Selected filtered wells, combine production data (decline rate) and calculate new output
 #  with original and hypothesized entity normalized lateral length.
 #'
 #' @param filtered filtered subset of the SL dataset.
-#' @param production usfsrpmsc production data.
+#' @param production production data.
 #' @param nll reactive normalized lateral length.
 #'
 #' @return `calcRateTime` returns a list of:
@@ -607,118 +607,6 @@ wellsInArea <- function(wells, shapefile, aoi_region = 0) {
                      left = FALSE) |>
            dplyr::mutate(aoi_region = text) |>
            sf::st_transform(4326))
-}
-
-#' Calculate Time Series Data
-#'
-#' Mutate rate time data to long format for `RscShiny::TSPlot`.
-#' Any NA product values will calculate as 1.
-#'
-#' @param x entity or group level data.frame
-#'
-#' @return `makeTSData()` returns either entity or group level list with 3 data.frames:
-#'
-#'  * `time series(id, t, y`
-#'    TODO: created attrib
-#'  * `metadata(id, group_id, source, type, product)`
-#'  * `annotations`
-#'
-makeTSData <- function(x) {
-
-  if ("entity_id" %in% colnames(x)) {
-    reservoir_data <- x |>
-      # HACK: Handling of NA values needs addressed
-      # This handling of NA values is a temporary patch which can be changed
-      # once JBC-Inc/RscShiny/issues/20 is fixed.
-
-      dplyr::mutate(dplyr::across(.cols = oil:scaled_water,
-                                  .fns = ~replace(., is.na(.), 1))) |>  # <---
-      tidyr::pivot_longer(cols = 7:12,
-                          names_to = "product",
-                          values_to = "y") |>
-      dplyr::mutate(id = paste(
-        stringr::str_pad(
-          string = stringr::str_trim(stringr::str_sub(aoi_region, start = 1, end = 2)),
-          width = 2,
-          side = "left",
-          pad = "0"
-        ),
-        reservoir,
-        hole_direction,
-        product,
-        sep = "-"
-      )) |>
-
-      dplyr::mutate(t = as.Date("1900-01-01") + months(month)) |>
-      dplyr::arrange(id, t) |>
-      dplyr::ungroup()
-
-  } else {
-
-    reservoir_data <- x |>
-      dplyr::rename(
-        oil = avg_oil,
-        gas = avg_gas,
-        water = avg_wat,
-        scaled_oil = avg_scaled_oil,
-        scaled_gas = avg_scaled_gas,
-        scaled_water = avg_scaled_wat
-      ) |>
-      tidyr::pivot_longer(cols = 5:10,
-                          names_to = "product",
-                          values_to = "y") |>
-      dplyr::mutate(id = paste(
-        # stringr::str_pad(
-        #   string = stringr::str_trim(stringr::str_sub(
-        #     aoi_region, start = 1, end = 2
-        #   )),
-        #   width = 2,
-        #   side = "left",
-        #   pad = "0"
-        # ),
-        trimws(aoi_region),
-        reservoir,
-        hole_direction,
-        product,
-        sep = "-"
-      )) |>
-
-      dplyr::mutate(t = lubridate::ymd("1900-01-01") + months(month)) |>
-      dplyr::arrange(id, t) |>
-      dplyr::ungroup()
-  }
-
-  ts_data = list(time_series = NULL, metadata = NULL, annotation = NULL)
-
-  ts_data$time_series <- reservoir_data |>
-    dplyr::select(id, t, y) |>
-    dplyr::filter(y > 0)
-
-  ts_data$metadata <- reservoir_data |>
-    dplyr::group_by(id) |>
-    dplyr::summarise_all(\(x) `[`(x, 1)) |>
-    dplyr::mutate(source = "Odin", type = "FCST") |>
-    dplyr::mutate(group_id = paste(hole_direction, aoi_region, sep = "-")) |>
-    dplyr::select(id, group_id, source, type, product) |>
-    dplyr::mutate(
-      units = dplyr::case_when(
-        product == "oil" ~ "bbl/month",
-        product == "water" ~ "bbl/month",
-        product == "gas" ~ "mcf/month",
-        product == "scaled_oil" ~ "bbl/month",
-        product == "scaled_water" ~ "bbl/month",
-        product == "scaled_gas" ~ "mcf/month"
-      )
-    )
-
-  ts_data$annotation <- tibble::tibble(
-    id = ts_data$time_series$id[1],
-    t = ts_data$time_series$t[1],
-    y = ts_data$time_series$y[1],
-    name = "fcst_hist_end"
-  )
-
-  ts_data
 }
 
 #' Leaflet Plugin - Control Grouped Layer

@@ -13,7 +13,7 @@ leafletServer(id, data, filtered, eur, texas)
 
 \item{filtered}{filtered subset of the SL dataset.}
 
-\item{eur}{usfsrpmsc EUR data.}
+\item{eur}{EUR data.}
 
 \item{texas}{\link{sf} containing Texas state polygons.}
 }

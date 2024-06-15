@@ -25,7 +25,7 @@ leafletUI <- function(id, height = "50vh") {
 #' @param id An ID string that corresponds with the ID used to call the modules UI functions.
 #' @param data processed SL dataset.
 #' @param filtered filtered subset of the SL dataset.
-#' @param eur usfsrpmsc EUR data.
+#' @param eur EUR data.
 #' @param texas [sf] containing Texas state polygons.
 #
 #  plugin_path: file path containing files needed to run the grouped control layers leaflet plugin.

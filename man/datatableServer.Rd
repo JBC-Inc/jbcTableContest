@@ -11,7 +11,7 @@ datatableServer(id, filtered, eur, nll)
 
 \item{filtered}{filtered subset of the SL dataset based on selected inputs.}
 
-\item{eur}{usfsrpmsc EUR data.}
+\item{eur}{EUR data.}
 
 \item{nll}{reactive normalized lateral length input.}
 }

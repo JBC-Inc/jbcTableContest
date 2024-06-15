@@ -19,7 +19,7 @@ computeSummary(
 
 \item{multi}{whether or not the shapefile has one or more polygons.}
 
-\item{eur}{usfsrpmsc entity EUR data.}
+\item{eur}{entity EUR data.}
 
 \item{nll}{reactive Normalized Lateral Length}
 

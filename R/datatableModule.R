@@ -32,7 +32,7 @@ datatableUI <- function(id, ...) {
 #'
 #' @param id An ID string that corresponds with the ID used to call the modules UI functions.
 #' @param filtered filtered subset of the SL dataset based on selected inputs.
-#' @param eur usfsrpmsc EUR data.
+#' @param eur EUR data.
 #' @param nll reactive normalized lateral length input.
 #'
 #' @return `datatableServer` has side effects of creating and updating the summary data table, along with
