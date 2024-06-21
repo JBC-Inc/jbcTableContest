@@ -1,4 +1,5 @@
-source("renv/activate.R")
+# source("renv/activate.R") for connect cloud
+
 
 if (interactive()) {
   suppressMessages(require(devtools))
