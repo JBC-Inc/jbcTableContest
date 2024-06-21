@@ -1,10 +1,12 @@
 name: jbctablecontest
-title:
+title: jbcTableContest
 username: kraggle
 account: kraggle
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 12184286
-bundleId: 8744256
+bundleId: 8759253
 url: https://kraggle.shinyapps.io/jbctablecontest/
 version: 1
+asMultiple: FALSE
+asStatic: FALSE
